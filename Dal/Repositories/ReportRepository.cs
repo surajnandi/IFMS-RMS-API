@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using RMS.Bal.Services.Interfaces;
 using RMS.Dal.Entities;
 using RMS.Dal.Repositories.Interfaces;
 using RMS.Helpers;
@@ -10,16 +11,20 @@ namespace RMS.Dal.Repositories
     {
         protected readonly RmsDbContext _context;
         private readonly IMapper _mapper;
-        public ReportRepository(RmsDbContext context, IMapper mapper)
+        private readonly IAuthService _authService;
+        public ReportRepository(RmsDbContext context, IMapper mapper, IAuthService authService)
         { 
             _context = context;
             _mapper = mapper;
+            _authService = authService;
         }
 
         public async Task<PaginatedResponseObject<IEnumerable<MwBillFtoSummaryReport>>> GetFtoSummaryReport(QueryParameters queryParameters)
         {
             //var query = _context.MwBillFtoSummaryReports;
             IQueryable<MwBillFtoSummaryReport> query = _context.MwBillFtoSummaryReports.AsQueryable();
+
+            //query = query.Where(x => x.DdoCode == _authService.User.Scope);
 
             if (queryParameters.Filters.Any())
                 query = query.ApplyFilters(queryParameters.Filters);

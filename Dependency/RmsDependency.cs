@@ -10,6 +10,7 @@ namespace RMS.Dependency
         public static IServiceCollection AddRmsDependencies(this IServiceCollection services)
         {
             //Services
+            services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IReportService, ReportService>();
 
             //Repositories
