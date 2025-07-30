@@ -14,6 +14,7 @@ namespace RMS.Dependency
             services.AddScoped<IReportService, ReportService>();
 
             //Repositories
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IReportRepository, ReportRepository>();
 
             return services;
