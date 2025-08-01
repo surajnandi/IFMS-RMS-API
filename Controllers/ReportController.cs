@@ -48,5 +48,21 @@ namespace RMS.Controllers
 
             return Ok(serviceResponse);
         }
+
+        [HttpPost("ExportFtoSummaryReport")]
+        public async Task<IActionResult> ExportFtoSummaryReport(QueryParameters queryParameters)
+        {
+            var results = await _reportService.GetFtoSummaryReport(queryParameters);
+
+            if (results == null || !results.Data.Any())
+                return NotFound("No data to export.");
+
+            var fileBytes = ExcelHelper.ExportToExcel(results.Data, "FTO Summary Report");
+
+            string fileName = $"FtoSummaryReport_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx";
+
+            return File(fileBytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+        }
+
     }
 }
