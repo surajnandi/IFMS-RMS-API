@@ -36,7 +36,7 @@ public partial class MwBillFtoSummaryReport
     [Precision(12, 2)]
     public decimal? GrossAmount { get; set; }
 
-    public DateTime? FtoForwardDate { get; set; }
+    public DateOnly? FtoForwardDate { get; set; }
 
     [StringLength(15)]
     public string? BillNo { get; set; }
@@ -49,33 +49,27 @@ public partial class MwBillFtoSummaryReport
 
     public string? DelayByDdo { get; set; }
 
-    [Column(TypeName = "timestamp without time zone")]
-    public DateTime? MandateDate { get; set; }
+    public DateOnly? MandateDate { get; set; }
 
     public string? DelayByTreasury { get; set; }
 
-    [Column(TypeName = "timestamp without time zone")]
-    public DateTime? PushToPfmsDate { get; set; }
+    public DateOnly? PushToPfmsDate { get; set; }
 
     public string? DelayInPushingToPfms { get; set; }
 
-    [Column(TypeName = "timestamp without time zone")]
-    public DateTime? DnReceiveFromPfmsDate { get; set; }
+    public DateOnly? DnReceiveFromPfmsDate { get; set; }
 
     public string? DelayInPfmsDn { get; set; }
 
-    [Column(TypeName = "timestamp without time zone")]
-    public DateTime? CnReceiveFromRbiDate { get; set; }
+    public DateOnly? CnReceiveFromRbiDate { get; set; }
 
     public string? DelayInRbiForCn { get; set; }
 
-    [Column(TypeName = "timestamp without time zone")]
-    public DateTime? RbiPaymentFilePushDate { get; set; }
+    public DateOnly? RbiPaymentFilePushDate { get; set; }
 
     public string? DelayInRbiPaymentFilePush { get; set; }
 
-    [Column(TypeName = "timestamp without time zone")]
-    public DateTime? RbiDnReciveDate { get; set; }
+    public DateOnly? RbiDnReciveDate { get; set; }
 
     public string? DelayInRbiForDn { get; set; }
 
