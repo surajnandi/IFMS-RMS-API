@@ -8,7 +8,7 @@ using RMS.Helpers;
 
 namespace RMS.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ReportController : ControllerBase

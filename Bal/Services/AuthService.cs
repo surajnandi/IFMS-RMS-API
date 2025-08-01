@@ -11,7 +11,6 @@ namespace RMS.Bal.Services
     public class AuthService : IAuthService
     {
         private readonly IMapper _mapper;
-        private AuthClaimModel userclaimmodel;
         private UserModel _user = new UserModel();
         private readonly RmsDbContext _rmsDbContext;
 

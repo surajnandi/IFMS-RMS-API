@@ -37,7 +37,7 @@ namespace RMS.Controllers
             {
                 return Ok(new
                 {
-                    status = "ValidToken"
+                    status = "TokenRevoked"
                 });
             }
             catch (Exception ex)
